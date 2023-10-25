@@ -109,3 +109,183 @@ print("liczb nieparzystych jest",ile_nieparzystych)
 print(suma_cyfr.__doc__)
 
 
+
+
+
+
+#algorytmy tekstowe
+#palindrom
+#wczytaj słowo i sprawdź czy jest palindromem
+
+def czyPalindrom(slowo):
+    if slowo == slowo[::-1]:
+        return True
+    return False
+
+print("podaj słowo")
+slowo=input()
+if czyPalindrom(slowo):
+    print(slowo, "jest palindromem")
+else:
+    print(slowo,"nie jest palindromem")
+
+# anagramy
+#sprawdź czy dwa słowa są anagramami czyli składają się z takich samych liter w tej samej liczbie
+
+def czyAnagramy(slowo1,slowo2):
+    lista1=list(slowo1)
+    lista2 = list(slowo2)
+    lista1.sort()
+    lista2.sort()
+    if lista1 == lista2:
+        return True
+    return False
+
+slowo1=input()
+slowo2=input()
+if czyAnagramy(slowo1,slowo2):
+    print("tak")
+else:
+    print("nie")
+
+#wczytaj slowo i powiedz jaka litera występuje najwięcej razy i ile
+slowo = "ejjżyraafaryżje"
+
+zbiorLiter = set(slowo)
+maks = 0
+teLitery =[]
+for litera in zbiorLiter:
+    if maks<slowo.count(litera):
+        maks = slowo.count(litera)
+        taLitera = litera
+        teLitery = [litera]
+    elif maks == slowo.count(litera):
+        teLitery.append(litera)
+
+print(teLitery,maks)
+
+#wczytaj liczbę i sprawdź czy jest liczbą pierwszą
+print("podaj liczbę")
+liczba=int(input())
+def czyPierwsza (liczba):
+    for i in range(2,int(liczba**0.5+1)+1):
+        if liczba % i == 0:
+            return False
+    return True
+
+if czyPierwsza(liczba):
+    print(liczba,"jest pierwsza")
+
+#wypisz wszystkie liczby pierwsze mniejsze od liczby wczytanej
+pierwsze1 =[1 for i in range(liczba+1)]
+pierwsze2 = []
+for i in range(liczba+1):
+    pierwsze2.append(1)
+pierwsze1[0]=0
+pierwsze1[1]=0
+for i in range(2,liczba+1): #zlozoność na pierwiastek
+    if pierwsze1[i] == 1:
+        for k in range(2*i,liczba+1,i):
+            pierwsze1[k]=0
+
+
+for i in range(liczba+1):
+    if pierwsze1[i] == 1:
+        print(i)
+
+print("podaj dwie liczby")
+
+a=int(input())
+b=int(input())
+while b!=0:
+    a,b=b,a%b
+print(a)
+
+
+
+
+
+
+zmienna = 12
+print("podaj liczbę")
+liczba=int(input())
+print(liczba)
+if liczba%2 == 0:
+    print(liczba,"jest parzysta")
+else:
+    print(liczba," jest nieparzysta ")
+
+#wypisz liczby dwucyfrowe parzyste
+for i in range(10,100,2):
+    print(i,end=", ")
+
+slowo="informatyka"
+print(slowo)
+for litera in slowo:
+    print(litera, ord(litera) )
+
+while liczba!=0:
+    print("podaj 0")
+    liczba=int(input())
+
+import random
+losowe = [];
+for i in range(10):
+    wylosowana = random.randint(1,10);
+    losowe.append(wylosowana)
+print(losowe)
+losowe.sort()
+print(losowe)
+print(sum(losowe))
+print(min(losowe))
+print(max(losowe))
+
+zbior = set(losowe)
+#wypisz ile razy wylosowały się poszczególne liczby
+for element in zbior:
+    print(element,losowe.count(element))
+
+
+
+
+
+
+    def wczytajTablice():
+    listaWczytanych = []
+    print("podaj 10 liczb")
+    for i in range(10):
+        print("podaj element", i)
+        listaWczytanych.append(int(input()))
+    return listaWczytanych
+
+
+def szukajMaks(lista, indeks):
+    maksymalna = lista[indeks]
+    zwroconyIndeks = indeks
+    for i in range(indeks + 1, len(lista)):
+        if maksymalna < lista[i]:
+            maksymalna = lista[i]
+            zwroconyIndeks = i
+    return zwroconyIndeks
+
+
+def sortuj(lista):
+    """
+    funkcja sortuje tablicę przez wybieranie
+    :argument lista: tablica do posortowania
+    :return: posortowaną tablicę
+    """
+    for i in range(len(lista) - 1):
+        indeks = szukajMaks(lista, i)
+        lista[i], lista[indeks] = lista[indeks], lista[i]
+
+    return lista
+
+
+tablica = wczytajTablice()
+print(tablica)
+print(szukajMaks(tablica, 3))
+print("posortowane malejąco")
+print(sortuj(tablica))
+#print(print.__doc__)
+print(sortuj.__doc__)
