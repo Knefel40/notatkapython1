@@ -289,3 +289,36 @@ print("posortowane malejąco")
 print(sortuj(tablica))
 #print(print.__doc__)
 print(sortuj.__doc__)
+
+
+
+
+
+https://cke.gov.pl/images/_EGZAMIN_MATURALNY_OD_2015/Arkusze_egzaminacyjne/2018/formula_do_2014/informatyka/MIN-R2_1P-182.pdf
+with open("slowa.txt") as dane:
+    ile_na_a = 0
+    ile_zawiera = 0
+    ile_anagramow =0
+    for wiersz in dane:
+        slowa = wiersz.split() #split wstawia tekst do listy domyslnie rozdzielony spacja
+        #print(slowa)
+        #print("pierwsze ",slowa[0])
+        #print("drugie ",slowa[1])
+        if slowa[0][-1] == "A":
+            ile_na_a+=1
+            print(slowa[0])
+        if slowa[1][-1] == "A":
+            ile_na_a+=1
+        if slowa[0] in slowa[1]:
+            print("zawiera ",slowa)
+            ile_zawiera+=1
+        litery1 = list(slowa[0])
+        litery2 = list(slowa[1])
+        litery1.sort()
+        litery2.sort()
+        if litery1 == litery2:
+            print("anagramy ",slowa)
+            ile_anagramow+=1
+print("słów kończących się na A jest ",ile_na_a)
+print("liczba wierszy w ktorych pierwsze slowo zawiera sie w drugim",ile_zawiera)
+print("liczba anagramow",ile_anagramow)
