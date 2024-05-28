@@ -322,3 +322,37 @@ with open("slowa.txt") as dane:
 print("słów kończących się na A jest ",ile_na_a)
 print("liczba wierszy w ktorych pierwsze slowo zawiera sie w drugim",ile_zawiera)
 print("liczba anagramow",ile_anagramow)
+
+
+
+
+
+
+
+najwieksza = 0
+def czyPalindrom(cos):
+    if cos == cos[::-1]:
+        return True
+    return False
+
+def suma_cyfr(liczba):
+    suma = 0
+    for cyfra in liczba:
+        suma = suma + int(cyfra)
+    return suma
+
+with open("liczby.txt") as dane:
+    for wiersz in dane:
+        liczba_tekstowo = wiersz.strip();
+        liczba = int(wiersz)
+        cos = str(wiersz)
+        print(suma_cyfr(liczba))
+        if czyPalindrom(cos):
+            print(cos, "jest palindromem")
+        if liczba % 2 == 0:
+            print(liczba)
+            if liczba > najwieksza:
+                najwieksza = liczba
+    print("najwiekasza: ",najwieksza)
+
+
